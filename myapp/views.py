@@ -56,6 +56,9 @@ from django.core.files.storage import FileSystemStorage
 #uploading and displaying image
 
 def img(request):
+    return render(request,"img_upload.html")
+
+def img_display(request):
     file_url=False
     if request.method=="POST" and request.FILES:
         image=request.FILES['sam']
@@ -63,4 +66,4 @@ def img(request):
         fs=FileSystemStorage()
         file=fs.save(image.name,image)
         file_url=fs.url(file)
-    return render(request,"img_upload.html",context={'file_url':file_url})
+    return render(request,"img_display.html",context={'file_url':file_url})

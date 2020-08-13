@@ -9,5 +9,6 @@ urlpatterns = [
     path('post_demo/',views.post_demo,name="post_demo"),
     path('registration/',views.registration,name="registration"),
     path('multi/',views.multi,name="multiselect"),
-    path('img/',views.img,name="img_upload")
+    path('img/',views.img,name="img_upload"),
+    path('img_display',views.img_display,name="img_display")
 ]
