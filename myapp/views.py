@@ -51,3 +51,16 @@ def multi(request):
         languages=request.POST.getlist("language")
         return HttpResponse("<h1>{}{}</h1>".format(foods,languages))
     return render(request,'multiselect.html')
+
+from django.core.files.storage import FileSystemStorage
+#uploading and displaying image
+
+def img(request):
+    file_url=False
+    if request.method=="POST" and request.FILES:
+        image=request.FILES['sam']
+        print(image) #it comes in cmd prompt img name
+        fs=FileSystemStorage()
+        file=fs.save(image.name,image)
+        file_url=fs.url(file)
+    return render(request,"img_upload.html",context={'file_url':file_url})
