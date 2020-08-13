@@ -41,7 +41,7 @@ def registration(request):
         else:
             gender="Male"
         send_mail ("Thanks For Registration","Hello Mr./Ms.{} {}\n Thanks for Registering!!!".format(first_name,last_name),
-                    "chiruurs1998@gmail.com",[email,],fail_silently=False)
+                    "chiragursm@gmail.com",[email,],fail_silently=False)
         return HttpResponse("{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>".format(first_name,last_name,email,password,phno,gender,date,month,year))
     return render(request,"myapp/registration.html")
 
