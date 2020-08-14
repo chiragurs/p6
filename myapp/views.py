@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.core.mail import send_mail
 # Create your views here.
@@ -42,7 +42,7 @@ def registration(request):
             gender="Male"
         send_mail ("Thanks For Registration","Hello Mr./Ms.{} {}\n Thanks for Registering!!!".format(first_name,last_name),
                     "chiragursm@gmail.com",[email,],fail_silently=False)
-        return HttpResponse("{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>".format(first_name,last_name,email,password,phno,gender,date,month,year))
+        return redirect("home")  #to redierect to the home page
     return render(request,"myapp/registration.html")
 
 def multi(request):
@@ -58,12 +58,11 @@ from django.core.files.storage import FileSystemStorage
 def img(request):
     return render(request,"img_upload.html")
 
+from myapp.utilities import store_image
 def img_display(request):
     file_url=False
     if request.method=="POST" and request.FILES:
-        image=request.FILES['sam']
-        print(image) #it comes in cmd prompt img name
-        fs=FileSystemStorage()
-        file=fs.save(image.name,image)
-        file_url=fs.url(file)
-    return render(request,"img_display.html",context={'file_url':file_url})
+        image1=request.FILES.get('sam1')
+        image2=request.FILES.get('sam2')
+        file_urls=map(store_image,[image1,image2])
+    return render(request,"img_display.html", context={'file_urls':file_urls})

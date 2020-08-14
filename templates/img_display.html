@@ -8,9 +8,11 @@
     
 </head>
 <body>
+    {% for file_url in file_urls %}
     {% if file_url %}
-        <img src={{ file_url }} alt="No image found" height="200" width="200">
+        <img src="{{ file_url }}" alt="No image found" height="200" width="200">
     {% endif %}
+    {% endfor %}
 
 </body>
 </html>
