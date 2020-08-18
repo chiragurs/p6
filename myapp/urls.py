@@ -10,5 +10,6 @@ urlpatterns = [
     path('registration/',views.registration,name="registration"),
     path('multi/',views.multi,name="multiselect"),
     path('img/',views.img,name="img_upload"),
-    path('img_display',views.img_display,name="img_display")
+    path('img_display',views.img_display,name="img_display"),
+    path('builtin/',views.builtin,name="builtin")
 ]

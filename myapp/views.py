@@ -66,3 +66,12 @@ def img_display(request):
         image2=request.FILES.get('sam2')
         file_urls=map(store_image,[image1,image2])
     return render(request,"img_display.html", context={'file_urls':file_urls})
+
+
+from myapp import forms
+def builtin(request):
+    form=forms.SampleForm()
+    return render(request,'builtin.html',{'form':form})
+
+    #forms is a file or a library
+    #in forms is a class so we inherit from forms.Form
